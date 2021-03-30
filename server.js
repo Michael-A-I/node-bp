@@ -5,6 +5,7 @@ const express = require("express")
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 
+
 /*
 .########...#######..##.....##.########.########.########.
 .##.....##.##.....##.##.....##....##....##.......##.....##
@@ -16,7 +17,7 @@ const expressLayouts = require('express-ejs-layouts')
 */
 
 const indexRouter = require('./routes/index')
-
+const authorRouter = require('./routes/author')
 
 /*
 .##.....##.####.########.##......##..######.
@@ -34,6 +35,8 @@ app.set('layout','layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
 
+// body parser built in (latest)
+app.use(express.urlencoded({extended:true}))
 
 /*
 .########.....###....########....###....########.....###.....######..########
@@ -65,7 +68,7 @@ db.once('open',()=> console.log("connected to mongoose"));
 */
 
 app.use('/', indexRouter)
-
+app.use('/authors',authorRouter)
 
 
 
