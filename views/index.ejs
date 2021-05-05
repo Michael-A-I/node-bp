@@ -1,1 +1,10 @@
-index.ejs
+<h2>Recently Added</h2>
+
+<!-- display all books images see author.js using ejs-->
+<%  books.forEach(book =>{ %>
+    <div>
+        <!-- set value to fs path of book to ref image -->
+        <img height="150" width="100" src="<%= book.coverImagePath%>" alt="">
+    </div> 
+        
+<% })%>
